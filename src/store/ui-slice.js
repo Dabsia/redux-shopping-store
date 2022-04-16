@@ -8,12 +8,19 @@ import {createSlice} from '@reduxjs/toolkit'
 // Using the reuxjstools, we dont really mutate the state even tho it looks like thats what we are doing tho
 const uiSlice = createSlice({
     name: 'ui',
-    initialState:  {cartIsVisible: false},
+    initialState:  {cartIsVisible: false, notification: null},
     reducers: {
         toggle(state) {
             state.cartIsVisible = !state.cartIsVisible
+        },
+        showNotification(state, action) {
+            state.notification = {
+                status:action.payload.status,
+                title: action.payload.title,
+                message: action.payload.message
+            }
         }
-    }
+    } 
 
 })
 
